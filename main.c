@@ -2,6 +2,7 @@
 # include "parsing.h"
 
 int main() {
-  char *s = " 1+ \t4";
-  parse(s);
+  char *s = " 1+ #\t 4";
+  printf("%d\n", parse(s));
+  printf(s);
 }
