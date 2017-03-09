@@ -24,3 +24,9 @@ double calculation(double a, double b, double operation)
   }
   return res;
 }
+
+double solve(struct tree *t, double x) {
+  if (t->left)
+    return calculation(solve(t->left, x), solve(t->right, x), t->key);
+  return t->key;
+}
