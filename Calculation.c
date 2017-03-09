@@ -1,4 +1,6 @@
-double calculation(int a, int b, char operation)
+# include "Calculation.h"
+
+double calculation(double a, double b, char operation)
 {
     switch(operation){
         case '+' : return a + b;
