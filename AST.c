@@ -1,20 +1,23 @@
 #include"AST.h"
 
-struct tree* append_top(struct tree* tree, char opp)
+static inline struct tree* create_node(double x)
 {
-  struct tree *node = (struct tree*) malloc(sizeof (struct tree));
-  node->key = opp;
-  node->left = tree;
+  struct tree *node = malloc(sizeof(struct tree));
+  node->left = NULL;
   node->right = NULL;
+  *(float *)node->key = x;
+}
+
+struct tree* append_top(struct tree* tree, double x)
+{
+  struct tree *node = create_node(x);
+  node->left = tree;
   return node;
 }
 
-struct tree* append_leaf(struct tree* tree, char num)
+void append_leaf(struct tree* tree, double x)
 {
-  struct tree *node = (struct tree*) malloc(sizeof (struct tree));
-  node->key = num;
-  node->left = NULL;
-  node->right = NULL;
+  struct tree *node = create_node(x);
   if(!tree->left)
   {
     tree->left = node;
@@ -23,5 +26,4 @@ struct tree* append_leaf(struct tree* tree, char num)
   {
     tree->right = node;
   }
-  return tree;
 }
