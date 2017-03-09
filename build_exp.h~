@@ -1,0 +1,9 @@
+#ifndef AST_H_
+#define AST_H_
+
+#include <stdlib.h>
+#include <math.h>
+#include "AST.h"
+#include "parsing.h"
+
+#endif

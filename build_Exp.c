@@ -1,41 +1,29 @@
-#include "AST.c"
-#include <stdlib.h>
-#include <math.h>
+#include "build_exp.h"
 
-struct tree* build_Exp(char *s)
+struct tree* build_exp(char **s)
 {
-  struct tree* ast = (struct tree*) malloc(sizeof (struct tree));
-  ast = NULL;
-  while(s)
+  struct tree* op_node = malloc(sizeof (struct tree));
+  if (**s == '(')
+    op_node->left = build_exp(++s);
+  else {
+    op_node->left = create_node(atof(*s));
+    while (IS_NUMBER(**s)) (*s)++;
+  }
+  
+  for (; **s; (*s)++)
   {
-    if (*s == '(')
-    {
-      struct tree* node = build_Exp(*(s+1));
-      while(*s != ')'){s += 1;}
-      ast = append_leaf_ast(ast, struct tree* nwast);
+    store_char(**s);
+    (*s)++;
+    if (**s == '(')
+      op_node->right = build_exp(++s);
+    else {
+      op_node->right = create_node(atof(*s));
+      while (IS_NUMBER(**s)) (*s)++;
     }
-
-    else if (*s == '+' || *s == '*' || *s == '-' || *s == '/')
-    {
-      ast = append_top(ast, *s);
-    }
-
-    else if (*s == ')')
-    {
-      return ast;
-    }
-
-    else if ((*s >= '0') && (*s <= '9'))
-    {
-      char *num = "";
-      while ((*(s+1) >= '0') && (*(s+1) <= '9'))
-      {
-        num += *s;
-        s += 1;
-      }
-      num += *s;
-      append_leaf(ast, atoif(num));
-    }
-    s += 1;
+    if (**s == ')')
+      return op_node;
+    struct tree *node = malloc(sizeof (struct tree));
+    node->left = op_node;
+    op_node = node;
   }
 }
