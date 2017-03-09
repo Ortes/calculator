@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 struct tree {
-  char key[8];
+  char *key;
   struct tree *left, *right;
 };
 
