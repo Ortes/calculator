@@ -5,7 +5,11 @@
 struct tree* build_Exp(char *s)
 {
   struct tree* ast = (struct tree*) malloc(sizeof (struct tree));
-  ast = NULL;
+  ast->key = '0';
+  ast->left = NULL;
+  ast->right = NULL;
+  ast = append_top(ast, '+');
+
   while(s)
   {
     if (*s == '(')
@@ -34,7 +38,7 @@ struct tree* build_Exp(char *s)
         s += 1;
       }
       num += *s;
-      append_leaf(ast, atoif(num));
+      append_leaf(ast, num);
     }
     s += 1;
   }
