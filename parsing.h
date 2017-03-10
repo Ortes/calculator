@@ -1,7 +1,7 @@
 #ifndef PARSING_H_
 #define PARSING_H_
 
-int parse(char *s);
+# include <err.h>
 
 # define S_BEGIN 0
 # define S_NUMBER 1
@@ -20,5 +20,6 @@ int parse(char *s);
 # define IS_NUMBER(_CHAR) _CHAR >= '0' && _CHAR <= '9'
 # define IS_OPERATOR(_CHAR) _CHAR == '+' || _CHAR == '-' || _CHAR == '*' || _CHAR == '/' || _CHAR == '^'
 
+int parse(char *s);
 
 #endif

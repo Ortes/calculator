@@ -1,3 +1,4 @@
+# include "parsing.h"
 
 int chknrmspace(char *s) {
   static char *sqrt = "sqrt";
@@ -67,8 +68,12 @@ int chknrmspace(char *s) {
       if (!sqrt[pos_in_func_def]) {
 	if (IS_SPACES(*s))
 	  break;
-	if (*s == '(')
+	else if (*s == '(') {
 	  state = S_NUMBER;
+	  pos_in_func_def = 0;
+	}
+	else
+	  return -1;
       }
       if (IS_NUMBER(*s))
 	return -1;
@@ -81,6 +86,7 @@ int chknrmspace(char *s) {
       break;
 
     default :
+      errx(1, "internal error");
       break;
     }
   }
