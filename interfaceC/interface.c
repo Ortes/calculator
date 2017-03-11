@@ -68,7 +68,6 @@ void on_activate_entry(GtkWidget *pEntry, gpointer data)
     /* Modification du texte contenu dans le GtkLabel */
     gtk_label_set_text(GTK_LABEL((GtkWidget*)data), sText);
 }
-3lock
  
 /* Fonction callback executee lors du signal "clicked" */
 void on_calculer_button(GtkWidget *pButton, gpointer data)
