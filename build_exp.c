@@ -18,7 +18,7 @@ struct tree* build_exp(char **s)
       op_node->right = build_exp(++s);
     else {
       op_node->right = create_node(atof(*s));
-      while (IS_NUMBER(**s)) (*s)++;
+      while (IS_NUMBER(**s) || **s == '.') (*s)++;
     }
     if (**s == ')')
       return op_node;
