@@ -1,9 +1,8 @@
 # include <stdio.h>
 # include "parsing.h"
+# include "build_exp.h"
 
 int main() {
-  char *s = " 1 + \t4 +sqrt (3 * (1 + 3) / sin(7 ^6) + n";
-  printf(s);
-  s = parse(s);
-  printf(s);
+  char *s = "2+3";
+  printf(solve(build(s)));
 }
