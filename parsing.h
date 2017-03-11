@@ -20,6 +20,6 @@
 # define IS_NUMBER(_CHAR) (_CHAR >= '0' && _CHAR <= '9')
 # define IS_OPERATOR(_CHAR) (_CHAR == '+' || _CHAR == '-' || _CHAR == '*' || _CHAR == '/' || _CHAR == '^')
 
-int parse(char *s);
+char *parse(char *s);
 
 #endif

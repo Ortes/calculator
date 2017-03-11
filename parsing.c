@@ -1,8 +1,8 @@
 # include "parsing.h"
 
-#define FUNCTION_NUMBER sizeof (funcs) / sizeof (*funcs)
+# define FUNCTION_NUMBER sizeof (funcs) / sizeof (*funcs)
 
-int chknrmspace(char *s) {
+char *chknrmspace(char *s) {
   static char *funcs[] = {"sqrt",
 			  "exp",
 			  "ln",
@@ -16,16 +16,26 @@ int chknrmspace(char *s) {
   printf("%zu\n", FUNCTION_NUMBER);
   
   int state = S_EXP_START;
-  int type = T_CALC;
+  //int type = T_CALC;
   int parentesis = 0;
+
+  char *dst;
+  size_t i = 0;
+  for (dst = s; *dst; dst++) i++;
+  dst = malloc(i * sizeof(char));
+  i = 0;
   
-  for (; *s; ++s) {
-    if (IS_SPACES(*s))
+  for (; *s; s++) {
+    dst[i] = *s;
+    i++;
+    if (IS_SPACES(*s)) {
+      i--;
       continue;
+    }
 
     else if (IS_NUMBER(*s)) {
       if (state != S_OPERATOR && state != S_EXP_START)
-	return -1;
+	return NULL;
       state = S_NUMBER;
     }
 
@@ -33,18 +43,18 @@ int chknrmspace(char *s) {
       if (state == S_NUMBER)
 	state = S_DECIMAL_NUMBER;
       else
-	return -1;
+	return NULL;
     }
 
     else if (IS_OPERATOR(*s)) {
       if (state != S_NUMBER && state != S_LETTER)
-	return -1;
+	return NULL;
       state = S_OPERATOR;
     }
     
     else if (IS_LETTER(*s)) {
       if (state != S_OPERATOR && state != S_EXP_START && state != S_LETTER)
-	return -1;
+	return NULL;
       state = S_LETTER;
       if (pos_in_func_def == 0 && !IS_LETTER(*(s + 1)))
 	continue;
@@ -65,31 +75,31 @@ int chknrmspace(char *s) {
 	}
       }
       if (nb_func_left <= 0)
-	return -1;
+	return NULL;
       pos_in_func_def++;
     }
 
     else if (*s == '(') {
       if (state != S_OPERATOR && state != S_FUNC)
-	return -1;
+	return NULL;
       parentesis++;
       state = S_EXP_START;
     }
     
     else if (*s == ')') {
       if (state != S_NUMBER && state != S_LETTER)
-	return -1;
+	return NULL;
       parentesis--;
       if (parentesis < 0)
-	return -1;
+	return NULL;
     }
 
     else
-      return -1;
+      return NULL;
   }
-  return type;
+  return dst;
 }
 
-int parse(char *s) {
+char *parse(char *s) {
   return chknrmspace(s);
 }
