@@ -2,7 +2,7 @@
 # include "parsing.h"
 
 int main() {
-  char *s = " 1+ #\t 4";
+  char *s = " 1 + \t4 +sqrt (3 * (1 + 3) #";
   printf("%d\n", parse(s));
   printf(s);
 }
