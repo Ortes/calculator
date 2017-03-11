@@ -22,7 +22,7 @@ double calculation(double a, double b, double operation)
     default : errx(1, "internal error unknown operator");
       break;
   }
-  return res;
+  return 0;
 }
 
 double solve(struct tree *t, double x) {
