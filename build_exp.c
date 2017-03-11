@@ -4,7 +4,7 @@ struct tree* build_exp(char **s)
 {
   struct tree* op_node = malloc(sizeof (struct tree));
   if (**s == '(')
-    op_node->left = build_exp(++s);
+    op_node->left = build_exp(++(*s));
   else {
     op_node->left = create_node(atof(*s));
     while (IS_NUMBER(**s) || **s == '.') (*s)++;
