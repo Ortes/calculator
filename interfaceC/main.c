@@ -102,9 +102,11 @@ void on_calculer_button(GtkWidget *pButton, gpointer data)
     /* Modification du texte contenu dans le GtkLabel */
     strncpy(Text,sText,255);
     double n  = solve(parse(Text));
-    gtk_label_set_text(GTK_LABEL(pTempLabel), sText);
+    sprintf(Text,"%f",n);    
+    gtk_label_set_text(GTK_LABEL(pTempLabel), Text);
  
     /* Liberation de la memoire utilisee par la liste */
     g_list_free(pList);
+    free(Text);
 }
 
