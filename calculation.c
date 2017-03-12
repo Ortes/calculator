@@ -1,9 +1,8 @@
 # include "calculation.h"
 
-double calculation(double a, double b, double operation)
+double calculation(double a, double b, char operation)
 {
-  char opp = *((char *)operation);
-  switch(operation){
+  switch (operation){
     case '+' : return a + b;
       break;
 	
@@ -25,8 +24,20 @@ double calculation(double a, double b, double operation)
   return 0;
 }
 
-double solve(struct tree *t, double x) {
+double solve(struct tree *t) {
   if (t->left)
-    return calculation(solve(t->left, x), solve(t->right, x), t->key);
-  return t->key;
+    return calculation(solve(t->left), solve(t->right), t->key[0]);
+  return *(double *)(t->key);
+}
+
+double solveX(struct tree *t, double x) {
+  if (t->left)
+    return calculation(solveX(t->left, x), solveX(t->right, x), t->key[0]);
+  return *(double *)(t->key);
+}
+
+double solveXN(struct tree *t, double x, size_t n) {
+  if (t->left)
+    return calculation(solveXN(t->left, x, n), solveXN(t->right, x, n), t->key[0]);
+  return *(double *)(t->key);
 }

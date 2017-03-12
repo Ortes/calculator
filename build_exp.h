@@ -1,11 +1,11 @@
-#ifndef AST_H_
-#define AST_H_
+#ifndef BUILD_EXP_H_
+#define BUILD_EXP_H_
 
 #include <stdlib.h>
 #include <math.h>
-#include "AST.h"
+#include "ast.h"
 #include "parsing.h"
 
-struct tree* build_exp(char **s);
+struct tree* build_exp(char *s);
 
 #endif
