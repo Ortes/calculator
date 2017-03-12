@@ -54,7 +54,7 @@ int main(int argc, char **argv)
     /* La donnee supplementaire est la GtkVBox pVBox */
     g_signal_connect(G_OBJECT(pButton), "clicked", G_CALLBACK(on_calculer_button), (GtkWidget*) pVBox);
 
-    g_signal_connect(G_OBJECT(pButton2), "clicked",G_CALLBACK(on_calculer_button), (GtkWidget*) pVBox);
+    g_signal_connect(G_OBJECT(pButton2), "clicked",G_CALLBACK(on_trace_button), (GtkWidget*) pVBox);
  
     gtk_widget_show_all(pWindow);
  
@@ -125,4 +125,5 @@ void on_trace_button(GtkWidget *pbutton, gpointer data){
   strncpy(Text,sText,255);
   trace(Text);
   g_list_free(pList);
+  free(Text);
 }
