@@ -13,9 +13,10 @@ OBJ= ${SRC:.c=.o}
 all: main
 
 main:
-	${CC} ${SRC} -o Interface ${CFLAFS} ${CPPFLAGS} 
-        
+	${CC} ${SRC} -o Interface ${CFLAGS} ${CPPFLAGS} 
+
 clean:
+	rm -f Interface
 	rm -f *~ *.o
 
 # END
