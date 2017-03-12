@@ -7,10 +7,13 @@ CFLAGS=   -std=c99 -lm -g #-O3
 LDFLAGS=
 LDLIBS= `pkg-config  --libs gtk+-3.0`
 
-SRC= interface.c ../parsing.* ../build_exp.* ../calculation.*
+SRC= main.c ../parsing.c ../build_exp.c ../calculation.c
 OBJ= ${SRC:.c=.o}
 
-all: 
+all: main
+
+main:
+	${CC} ${SRC} -o Interface ${CFLAFS} ${CPPFLAGS} 
         
 clean:
 	rm -f *~ *.o
