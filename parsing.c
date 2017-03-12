@@ -101,5 +101,8 @@ char *chknrmspace(char *s) {
 }
 
 struct tree *parse(char *s) {
-  return build_exp(chknrmspace(s));
+  char * cs = chknrmspace(s);
+  if (!cs)
+    errx(1, "invalid syntax");
+  return build_exp(cs);
 }
