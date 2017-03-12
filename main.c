@@ -3,7 +3,10 @@
 # include "build_exp.h"
 # include "calculation.h"
 
-int main() {
+int main(int argc, char *argv[]) {
   char *s = "2+3";
-  printf("%lf\n", solve(build_exp(s)));
+  if (argc > 1)
+    printf("%lf\n", solve(parse(argv[1])));
+  else
+    printf("%lf\n", solve(parse(s)));
 }

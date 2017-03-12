@@ -4,7 +4,7 @@ CFLAGS= -Wall -Wextra -std=c99 -g
 LDFLAGS=
 LDLIBS=
 
-SRC = main.c build_exp.c calculation.c
+SRC = main.c build_exp.c calculation.c parsing.c
 OBJ = ${SRC:.c=.o}
 DEP = ${SRC:.c=.d}
 

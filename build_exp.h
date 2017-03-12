@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "ast.h"
-#include "parsing.h"
+#include "char_macros.h"
 
 struct tree* build_exp(char *s);
 

@@ -4,6 +4,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <err.h>
+# include "build_exp.h"
 
 # define S_EXP_START 0
 # define S_NUMBER 1
@@ -15,11 +16,6 @@
 # define T_CALC 0
 # define T_FUNCTION 1
 
-# define IS_SPACES(_CHAR) (_CHAR == ' ' || _CHAR == '\t')
-# define IS_LETTER(_CHAR) ((_CHAR >= 'a' && _CHAR <= 'z') || (_CHAR >= 'A' && _CHAR <= 'Z'))
-# define IS_NUMBER(_CHAR) (_CHAR >= '0' && _CHAR <= '9')
-# define IS_OPERATOR(_CHAR) (_CHAR == '+' || _CHAR == '-' || _CHAR == '*' || _CHAR == '/' || _CHAR == '^')
-
-char *parse(char *s);
+struct tree *parse(char *s);
 
 #endif

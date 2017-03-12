@@ -13,7 +13,6 @@ char *chknrmspace(char *s) {
   for (size_t i = 0; i < FUNCTION_NUMBER; i++) is_func[i] = 1;
   int nb_func_left = FUNCTION_NUMBER;
   int pos_in_func_def = 0;
-  printf("%zu\n", FUNCTION_NUMBER);
   
   int state = S_EXP_START;
   //int type = T_CALC;
@@ -22,7 +21,7 @@ char *chknrmspace(char *s) {
   char *dst;
   size_t i = 0;
   for (dst = s; *dst; dst++) i++;
-  dst = malloc(i * sizeof(char));
+  dst = malloc((i + 1) * sizeof(char));
   i = 0;
   
   for (; *s; s++) {
@@ -97,9 +96,10 @@ char *chknrmspace(char *s) {
     else
       return NULL;
   }
+  dst[i] = 0;
   return dst;
 }
 
-char *parse(char *s) {
-  return chknrmspace(s);
+struct tree *parse(char *s) {
+  return build_exp(chknrmspace(s));
 }

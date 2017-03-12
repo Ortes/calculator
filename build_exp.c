@@ -3,9 +3,10 @@
 struct tree* __build_exp(char **s)
 {
   struct tree* op_node;
-  if (**s == '(')
-    op_node = build_exp(++(*s));
-  else {
+  if (**s == '(') {
+    (*s)++;
+    op_node = __build_exp(s);
+  } else {
     op_node = create_node(atof(*s));
     while (IS_NUMBER(**s) || **s == '.') (*s)++;
   }
@@ -16,14 +17,17 @@ struct tree* __build_exp(char **s)
     op_node = node;
     store_char(op_node, **s);
     (*s)++;
-    if (**s == '(')
-      op_node->right = build_exp(++(*s));
-    else {
+    if (**s == '(') {
+      (*s)++;
+      op_node->right = __build_exp(s);
+    } else {
       op_node->right = create_node(atof(*s));
       while (IS_NUMBER(**s) || **s == '.') (*s)++;
     }
-    if (**s == ')')
+    if (**s == ')') {
+      (*s)++;
       return op_node;
+    }
   }
   return op_node;
 }
