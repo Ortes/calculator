@@ -5,6 +5,7 @@
 #include "../build_exp.h"
 #include "../calculation.h"
 #include <gtk/gtk.h>
+#include "sdl_trace.h"
  
 void on_activate_entry(GtkWidget *pEntry, gpointer data);
 void on_calculer_button(GtkWidget *pButton, gpointer data);
@@ -110,3 +111,18 @@ void on_calculer_button(GtkWidget *pButton, gpointer data)
     free(Text);
 }
 
+void on_trace_button(GtkWidget *pbutton, gpointer data){
+  GtkWidget *pTempEntry;
+  GtkWidget *pTempLabel;
+  GList *pList;
+  char *Text = malloc(sizeof(char)*256);  
+
+  pList = gtk_container_get_children(GTK_CONTAINER((GtkWidget*)data));
+  pTempEntry = GTK_WIDGET(pList->data);
+  pList = g_list_next(pList);
+  const gchar *sText;
+  sText = gtk_entry_get_text(GTK_ENTRY(pTempEntry));
+  strncpy(Text,sText,255);
+  trace(Text);
+  g_list_free(pList);
+}
