@@ -1,4 +1,9 @@
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include "../parsing.h"
+#include "../build_exp.h"
+#include "../calculation.h"
 #include <gtk/gtk.h>
  
 void on_activate_entry(GtkWidget *pEntry, gpointer data);
@@ -76,7 +81,7 @@ void on_calculer_button(GtkWidget *pButton, gpointer data)
     GtkWidget *pTempLabel;
     GList *pList;
     const gchar *sText;
- 
+    char *Text = malloc(sizeof(char)*256);
     /* Recuperation de la liste des elements que contient la GtkVBox */
     pList = gtk_container_get_children(GTK_CONTAINER((GtkWidget*)data));
  
@@ -93,9 +98,10 @@ void on_calculer_button(GtkWidget *pButton, gpointer data)
     pTempLabel = GTK_WIDGET(pList->data);
  
     /* Recuperation du texte contenu dans le GtkEntry */
-    sText = gtk_entry_get_text(GTK_ENTRY(pTempEntry));
- 
+    sText = gtk_entry_get_text(GTK_ENTRY(pTempEntry)); 
     /* Modification du texte contenu dans le GtkLabel */
+    strncpy(Text,sText,255);
+    double n  = solve(parse(Text));
     gtk_label_set_text(GTK_LABEL(pTempLabel), sText);
  
     /* Liberation de la memoire utilisee par la liste */

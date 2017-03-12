@@ -7,7 +7,7 @@ CFLAGS=   -std=c99 -lm -g #-O3
 LDFLAGS=
 LDLIBS= `pkg-config  --libs gtk+-3.0`
 
-SRC=
+SRC= interface.c ../parsing.* ../build_exp.* ../calculation.*
 OBJ= ${SRC:.c=.o}
 
 all: 
