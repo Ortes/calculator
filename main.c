@@ -4,13 +4,10 @@
 # include "calculation.h"
 
 int main(int argc, char *argv[]) {
-  double x = 4;
-  char *s = "2*n+3*x";
+  char *s = "42.1+23*4/(1+5)";
   printf("%s\n", s);
   if (argc > 1)
-    for (size_t i = 0; i < 30; i++)
-      printf("%lf\n", solveXN(parse(argv[1]), x, i));
+    printf("%lf\n", solve(parse(argv[1])));
   else
-    for (size_t i = 0; i < 30; i++)
-      printf("%lf\n", solveXN(parse(s), x, i));
+    printf("%lf\n", solve(parse(s)));
 }

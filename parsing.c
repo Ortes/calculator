@@ -33,7 +33,7 @@ char *chknrmspace(char *s) {
     }
 
     else if (IS_NUMBER(*s)) {
-      if (state != S_OPERATOR && state != S_EXP_START)
+      if (state != S_OPERATOR && state != S_EXP_START && state != S_NUMBER && state != S_DECIMAL_NUMBER)
 	return NULL;
       state = S_NUMBER;
     }
