@@ -11,16 +11,6 @@ char* swap(char* str,char x,char a){
   return str2;
 }
 
-int posiy(char*str,double i){
-  int x =1000-solveX(parse(str),i)-500;
-  if(x <1000 && x>1)
-    return x;
-  else
-    return 3000;
-}
-
-
-
 void paused()
 {
     int continuer = 1;
@@ -58,15 +48,15 @@ void trace(char* str)
     }
 
     SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 255, 255, 255));
-    //int a = posiy(str,-50);
-    int b = 0;
-    for(int i = 0;i<1000;i += 1){
-        b= posiy(str,i-50./10);
-        //drawLine(ecran,i-10,b,i,a,0);
-        //a= b;
-        if(b !=3000)
-          putpixel(ecran,i,b,0);
-      
+    int y;
+    int lastY = 1000 - (solveX(parse(str), (-1 - 500) / (1000. / 2 / 10)) * (1000 / 2 / 10) + 500);
+    for(int i = 0; i < 1001; i++) {
+      y = 1000 - (solveX(parse(str), (i - 500) / (1000. / 2 / 10)) * (1000 / 2 / 10) + 500);
+      if(y < 1000 && y >= 0) {
+	//putpixel(ecran, i, y, 0);
+	drawLine(ecran, i - 1, lastY, i, y, 0);
+      }
+      lastY = y;
     }
 
     SDL_Flip(ecran);
