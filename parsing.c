@@ -103,6 +103,6 @@ char *chknrmspace(char *s) {
 struct tree *parse(char *s) {
   char * cs = chknrmspace(s);
   if (!cs)
-    return null;
+    return NULL;
   return build_exp(cs);
 }
