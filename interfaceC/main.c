@@ -9,6 +9,7 @@
  
 void on_activate_entry(GtkWidget *pEntry, gpointer data);
 void on_calculer_button(GtkWidget *pButton, gpointer data);
+void on_trace_button(GtkWidget *pButton, gpointer data);
  
 int main(int argc, char **argv)
 {

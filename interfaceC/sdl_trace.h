@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <SDL.h>
+#include "drawline.h"
 #include <string.h>
 #include "../parsing.h"
 #include "../build_exp.h"

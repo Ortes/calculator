@@ -36,14 +36,13 @@ void paused()
 void trace(char* str)
 {
     SDL_Surface *ecran = NULL;
-    SDL_Renderer* renderer = NULL;
     if (SDL_Init(SDL_INIT_VIDEO) == -1) // Démarrage de la SDL. Si erreur :
     {
         fprintf(stderr, "Erreur d'initialisation de la SDL : %s\n", SDL_GetError()); // Écriture de l'erreur
         exit(EXIT_FAILURE); // On quitte le programme
     }
     //ecran = SDL_SetVideoMode(1000, 1000, 32, SDL_SWSURFACE);
-    SDL_CreateWindowAndRenderer(1000, 1000, 32, &ecran, &renderer);
+    ecran = SDL_SetVideoMode(1000, 1000, 32, SDL_HWSURFACE);
     if (ecran == NULL) // Si l'ouverture a échoué, on le note et on arrête
 
     {
@@ -59,7 +58,7 @@ void trace(char* str)
     int b = 0;
     for(int i = 10;i<1000;i += 10){
       b= posiy(swap(str,'x',i-50./10));
-      SDL_RenderDrawLine(renderer,i-10,b,i,a);
+      drawLine(ecran,i-10,b,i,a,0);
       a= b;
     }
 

@@ -7,7 +7,7 @@ CFLAGS=   -std=c99 -lm -g #-O3
 LDFLAGS=
 LDLIBS= `pkg-config  --libs gtk+-3.0 sdl` -lSDL_image
 
-SRC= main.c ../parsing.c ../build_exp.c ../calculation.c sdl_trace.c
+SRC= main.c ../parsing.c ../build_exp.c ../calculation.c sdl_trace.c drawline.c
 OBJ= ${SRC:.c=.o}
 
 all: main
