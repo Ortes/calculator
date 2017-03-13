@@ -1,8 +1,8 @@
 #include "drawline.h"
 
 void putpixel (SDL_Surface *ecran, int x, int y, Uint32 pixel){
-  int byteperpixel = theScreen->format->BytesPerPixel;
-  Uint8 *p = (Uint8*)theScreen->pixels + y * theScreen->pitch + x * byteperpixel;
+  int byteperpixel = ecran->format->BytesPerPixel;
+  Uint8 *p = (Uint8*)ecran->pixels + y * ecran->pitch + x * byteperpixel;
   *(Uint32 *)p = pixel;
 }
 
