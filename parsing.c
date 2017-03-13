@@ -46,6 +46,8 @@ char *chknrmspace(char *s) {
     }
 
     else if (IS_OPERATOR(*s)) {
+      if (*s == '-')
+	continue;
       if (state != S_NUMBER && state != S_LETTER)
 	return NULL;
       state = S_OPERATOR;
