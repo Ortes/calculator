@@ -54,6 +54,8 @@ char *chknrmspace(char *s) {
     }
     
     else if (IS_LETTER(*s)) {
+      if ((state == S_NUMBER || state == S_DECIMAL_NUMBER) && (*s == 'e' || *s == 'E'))
+	continue;
       if (state != S_OPERATOR && state != S_EXP_START && state != S_LETTER)
 	return NULL;
       state = S_LETTER;
