@@ -49,7 +49,7 @@ char *chknrmspace(char *s) {
     else if (IS_OPERATOR(*s)) {
       if (*s == '-')
 	continue;
-      if (state != S_NUMBER && state != S_LETTER)
+      if (state != S_NUMBER || state != S_LETTER || S_DECIMAL_NUMBER)
 	return NULL;
       state = S_OPERATOR;
     }
