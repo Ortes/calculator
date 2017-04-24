@@ -3,6 +3,7 @@
 
 # include <err.h>
 # include "parsing.h"
+# include "calculation.h"
 # include <stdio.h>
 # include <stdlib.h>
 
