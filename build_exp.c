@@ -29,20 +29,20 @@ struct tree* __build_exp(char **s)
       op_node->right = __build_exp(s);
     } else {
       if (IS_LETTER(**s)) {
-	op_node->right = create_node(0);
-	store_char(op_node->right, **s);
-	(*s)++;
+				op_node->right = create_node(0);
+				store_char(op_node->right, **s);
+				(*s)++;
       } else {
-	op_node->right = create_node(atof(*s));
-	while (IS_NUMBER(**s) || **s == '.' || **s  == 'e' || **s == 'E' || **s == '-') (*s)++;
+				op_node->right = create_node(atof(*s));
+				while (IS_NUMBER(**s) || **s == '.' || **s  == 'e' || **s == 'E' || **s == '-') (*s)++;
       }
     }
     if (is_rot_possible) {
       if (OP_PRIORITY(get_char(op_node)) > OP_PRIORITY(get_char(op_node->left))) {
-	struct tree *tmp = op_node;
-	op_node = op_node->left;
-	tmp->left = op_node->right;
-	op_node->right = tmp;
+				struct tree *tmp = op_node;
+				op_node = op_node->left;
+				tmp->left = op_node->right;
+				op_node->right = tmp;
       }
     }
     if (**s == ')') {
