@@ -4,8 +4,8 @@
 # include <err.h>
 # include "ast.h"
 
-# define GET_VALUE(_ARRAY) *(double *)(_ARRAY)
-# define SET_VALUE(_ARRAY) *(double *)(_ARRAY) = _VALUE
+# define GET_VALUE(_TREE) *(double *)(_TREE->key)
+# define SET_VALUE(_TREE, _VALUE) *(double *)(_TREE->key) = _VALUE
 
 double solve(struct tree *t);
 double solveX(struct tree *t, double x);
