@@ -19,10 +19,10 @@ double calculation(double a, double b, char operation)
       return a / b;
       break;
 	
-    default : errx(1, "internal error unknown operator");
+    case '^' : return pow(a, b);
       break;
 
-    case '^' : return pow(a, b);
+	default : errx(1, "internal error unknown operator");
       break;
   }
   return 0;
@@ -37,7 +37,7 @@ double solve(struct tree *t) {
 double solveX(struct tree *t, double x) {
   if (t->left)
     return calculation(solveX(t->left, x), solveX(t->right, x), t->key[0]);
-  if (t->key[6] == 0xFF && t->key[7] == 0xFF && t->key[0] == 'x')
+  if (t->key[6] == -1 && t->key[7] == -1 && t->key[0] == 'x')
     return x;
   return *(double *)(t->key);
 }
@@ -45,9 +45,9 @@ double solveX(struct tree *t, double x) {
 double solveXN(struct tree *t, double x, size_t n) {
   if (t->left)
     return calculation(solveXN(t->left, x, n), solveXN(t->right, x, n), t->key[0]);
-  if (t->key[6] == 0xFF && t->key[7] == 0xFF && t->key[0] == 'x')
+  if (t->key[6] == -1 && t->key[7] == -1 && t->key[0] == 'x')
     return x;
-  if (t->key[6] == 0xFF && t->key[7] == 0xFF && t->key[0] == 'n')
+  if (t->key[6] == -1 && t->key[7] == -1 && t->key[0] == 'n')
     return (double)n;
   return *(double *)(t->key);
 }
