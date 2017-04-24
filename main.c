@@ -14,9 +14,9 @@ int main(int argc, char *argv[]) {
   else{
     printf("%lf\n", solve(parse(s)));
   
-    int *tab = developper(parse(e));
+    double *tab = developper(parse(e));
     for(int i =1;i<tab[0];i++){
-      printf("%d ",tab[i]);
+      printf("%lf ",tab[i]);
     }
     free(tab);
   }

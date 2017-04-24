@@ -9,7 +9,7 @@ double* developper(struct tree *t){
     double g = tabg[0];
     double d = tabd[0];
     //gestion *
-    if(GET_CHAR(t) == '*'){
+    if(get_char(t) == '*'){
       tab = malloc(sizeof(double)*(g+d-1));
       tab[0]= g+d-1;
       for(int i = 1; i<d-1;i++){
@@ -29,7 +29,7 @@ double* developper(struct tree *t){
         for(int i = 1; i<g-1;i++){
           tab[i] = 0;
         }
-        if (GET_CHAR(t) == '+'){
+        if (get_char(t) == '+'){
           for(int i = 1; i<d;i++){
             tab[i] = tabg[i]+tabd[i];
           }
@@ -52,7 +52,7 @@ double* developper(struct tree *t){
         for(int i = 1; i<d-1;i++){
           tab[i] = 0;
         }
-        if (GET_CHAR(t) == '+'){
+        if (get_char(t) == '+'){
           for(int i = 1; i<g-1;i++){
             tab[i] = tabg[i]+tabd[i];
           }
@@ -74,7 +74,7 @@ double* developper(struct tree *t){
     free(tabd);
 
   }
-  else if (GET_VALUE(t) == 'x'){
+  else if (get_number(t) == 'x'){
     tab = malloc(sizeof(double)*3);
     tab[0]=3;
     tab[1]=0;
@@ -83,7 +83,7 @@ double* developper(struct tree *t){
   else{
     tab = malloc(sizeof(double)*2);
     tab[0] = 2;
-    tab[1] = GET_VALUE(t);
+    tab[1] = get_number(t);
   }
   return tab;
 }
