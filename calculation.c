@@ -20,6 +20,9 @@ double calculation(double a, double b, char operation)
 	
     default : errx(1, "internal error unknown operator");
       break;
+
+    case '^' : return pow(a, b);
+      break;
   }
   return 0;
 }
