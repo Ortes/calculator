@@ -5,7 +5,7 @@
 # include "ast.h"
 
 # define GET_VALUE(_ARRAY) *(double *)(_ARRAY)
-# define GET_VALUE(_ARRAY) *(double *)(_ARRAY) = _VALUE
+# define SET_VALUE(_ARRAY) *(double *)(_ARRAY) = _VALUE
 
 double solve(struct tree *t);
 double solveX(struct tree *t, double x);
