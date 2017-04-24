@@ -30,10 +30,10 @@ int* developper(struct tree *t){
           tab[i] = 0;
         }
         if (*t->key == '+'){
-          for(int i = 1; i<d-1;i++){
+          for(int i = 1; i<d;i++){
             tab[i] = tabg[i]+tabd[i];
           }
-          for(int i = d-1; i<g-1;i++){
+          for(int i = d+11; i<g;i++){
             tab[i] = tabg[i];
           } 
         }
@@ -81,19 +81,10 @@ int* developper(struct tree *t){
     tab[2]=1;
   }
   else{
-    tab = malloc(sizeof(int)*1);
+    tab = malloc(sizeof(int)*2);
     tab[0] = 2;
-    tab[1] = *t->key;
+    tab[1] = t->key[0];
   }
   return tab;
-}
-
-int main() {
-  char *s = "42+23*4*X";
-  int* tab = developper(parse(s));
-  for(int i = 1; i<tab[0];i++){
-    printf("%d",tab[i]);
-  }
-  free(tab);
 }
 
