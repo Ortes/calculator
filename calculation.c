@@ -1,4 +1,5 @@
 # include "calculation.h"
+# include <math.h>
 
 double calculation(double a, double b, char operation)
 {
