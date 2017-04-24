@@ -18,6 +18,10 @@ static inline void store_char(struct tree *t, char c) {
   t->key[0] = c;
 }
 
+static inline char get_number(struct tree *t) {
+  return *(double *)(t->key);
+}
+
 static inline char get_char(struct tree *t) {
   return t->key[0];
 }
