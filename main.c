@@ -2,6 +2,7 @@
 # include "parsing.h"
 # include "build_exp.h"
 # include "calculation.h"
+# include "equation.h"
 
 int main(int argc, char *argv[]) {
   char *s = "42.1+23*4/(1+5)";

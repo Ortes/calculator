@@ -6,4 +6,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+int* developper(struct tree *t);
+
 #endif
