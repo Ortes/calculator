@@ -1,7 +1,7 @@
 CC=gcc
 CPPFLAGS=
-CFLAGS= -Wall -Wextra -std=c99 -g
-LDFLAGS=
+CFLAGS= -Wall -Wextra -std=c99 -lm -g
+LDFLAGS= -lm
 LDLIBS=
 
 SRC = main.c build_exp.c calculation.c parsing.c equation.c

@@ -1,16 +1,16 @@
 #include "equation.h"
 
 
-int* developper(struct tree *t){
-  int* tab = NULL;
+double* developper(struct tree *t){
+  double* tab = NULL;
   if(t->left){
-    int* tabg = developper(t->left);
-    int* tabd = developper(t->right);
-    int g = tabg[0];
-    int d = tabd[0];
+    double* tabg = developper(t->left);
+    double* tabd = developper(t->right);
+    double g = tabg[0];
+    double d = tabd[0];
     //gestion *
-    if(*t->key == '*'){
-      tab = malloc(sizeof(int)*(g+d-1));
+    if(get_char(t) == '*'){
+      tab = malloc(sizeof(double)*(g+d-1));
       tab[0]= g+d-1;
       for(int i = 1; i<d-1;i++){
         tab[i] = 0;
@@ -24,12 +24,12 @@ int* developper(struct tree *t){
     else{
       //gestion + et -
       if(g>d){
-        tab = malloc(sizeof(int)*g);
+        tab = malloc(sizeof(double)*g);
         g = tab[0];
         for(int i = 1; i<g-1;i++){
           tab[i] = 0;
         }
-        if (*t->key == '+'){
+        if (get_char(t) == '+'){
           for(int i = 1; i<d;i++){
             tab[i] = tabg[i]+tabd[i];
           }
@@ -47,12 +47,12 @@ int* developper(struct tree *t){
         }
       }
       else{
-        tab = malloc(sizeof(int)*d);
+        tab = malloc(sizeof(double)*d);
         tab[0]=d;
         for(int i = 1; i<d-1;i++){
           tab[i] = 0;
         }
-        if (*t->key == '+'){
+        if (get_char(t) == '+'){
           for(int i = 1; i<g-1;i++){
             tab[i] = tabg[i]+tabd[i];
           }
@@ -74,16 +74,16 @@ int* developper(struct tree *t){
     free(tabd);
 
   }
-  else if (*t->key == 'x'){
-    tab = malloc(sizeof(int)*3);
+  else if (get_number(t) == 'x'){
+    tab = malloc(sizeof(double)*3);
     tab[0]=3;
     tab[1]=0;
     tab[2]=1;
   }
   else{
-    tab = malloc(sizeof(int)*2);
+    tab = malloc(sizeof(double)*2);
     tab[0] = 2;
-    tab[1] = t->key[0];
+    tab[1] = get_number(t);
   }
   return tab;
 }

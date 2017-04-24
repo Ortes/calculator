@@ -3,9 +3,11 @@
 
 # include <err.h>
 # include "parsing.h"
+# include "calculation.h"
 # include <stdio.h>
 # include <stdlib.h>
+# include "ast.h"
 
-int* developper(struct tree *t);
+double* developper(struct tree *t);
 
 #endif
