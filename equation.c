@@ -25,23 +25,23 @@ double* developper(struct tree *t){
       //gestion + et -
       if(g>d){
         tab = malloc(sizeof(double)*g);
-        g = tab[0];
+        tab[0] = g;
         for(int i = 1; i<g;i++){
           tab[i] = 0;
         }
         if (get_char(t) == '+'){
-          for(int i = 1; i<d+1;i++){
+          for(int i = 1; i<d;i++){
             tab[i] = tabg[i]+tabd[i];
           }
-          for(int i = d+1; i<g;i++){
+          for(int i = d; i<g;i++){
             tab[i] = tabg[i];
           } 
         }
         else{
-          for(int i = 1; i<=d;i++){
+          for(int i = 1; i<d;i++){
             tab[i] = tabg[i]-tabd[i];
           }
-          for(int i = d+1; i<g;i++){
+          for(int i = d; i<g;i++){
             tab[i] = tabg[i];
           }
         }
@@ -53,19 +53,19 @@ double* developper(struct tree *t){
           tab[i] = 0;
         }
         if (get_char(t) == '+'){
-          for(int i = 1; i<g-1;i++){
+          for(int i = 1; i<=g;i++){
             tab[i] = tabg[i]+tabd[i];
           }
-          for(int i = g-1; i<d-1;i++){
+          for(int i = g; i<d;i++){
             tab[i] = tabd[i];
           }
         }
         else{
-          for(int i = 1; i<g-1;i++){
+          for(int i = 1; i<=g;i++){
             tab[i] = tabg[i]-tabd[i];
           }
-          for(int i = g-1; i<d-1;i++){
-            tab[i] = -1*tabd[i];
+          for(int i = g; i<d;i++){
+            tab[i] = -tabd[i];
           }
         }
       }

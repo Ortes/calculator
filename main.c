@@ -6,7 +6,8 @@
 
 int main(int argc, char *argv[]) {
   char *s = "42.1+23*4/(1+5)";
-  char *e = "1*x";
+  //char *e = "x*(x+x*x+1)+x+1";
+  char *a = "1-x";
   printf("%s\n", s);
   if (argc > 1){
     printf("%lf\n", solve(parse(argv[1])));
@@ -14,7 +15,7 @@ int main(int argc, char *argv[]) {
   else{
     printf("%lf\n", solve(parse(s)));
   
-    double *tab = developper(parse(e));
+    double *tab = developper(parse(a));
     for(int i =1;i<tab[0];i++){
       printf("%lf ",tab[i]);
     }
