@@ -61,11 +61,11 @@ double* developper(struct tree *t){
           }
         }
         else{
-          for(int i = 1; i<=g;i++){
-            tab[i] = tabg[i]-tabd[i];
-          }
-          for(int i = g; i<d;i++){
-            tab[i] = -tabd[i];
+          for(int i = 1; i<d;i++){
+            if(i>=g)
+              tab[i]=-tabd[i];
+            else
+              tab[i]=tabg[i]-tabd[i];
           }
         }
       }
