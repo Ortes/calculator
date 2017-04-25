@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     gtk_window_set_default_size(GTK_WINDOW(pWindow), 320, 200);
     g_signal_connect(G_OBJECT(pWindow), "destroy", G_CALLBACK(gtk_main_quit), NULL);
  
-    pVBox = gtk_vbox_new(TRUE, 0);
+    pVBox = gtk_box_new(TRUE, 0);
     gtk_container_add(GTK_CONTAINER(pWindow), pVBox);
  
     /* Creation du GtkEntry */
