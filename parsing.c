@@ -3,12 +3,6 @@
 # define FUNCTION_NUMBER sizeof (funcs) / sizeof (*funcs)
 
 char *chknrmspace(char *s) {
-  static char *funcs[] = {"sqrt",
-			  "exp",
-			  "ln",
-			  "cos",
-			  "sin",
-			  "tan"};
   int is_func[FUNCTION_NUMBER];
   for (size_t i = 0; i < FUNCTION_NUMBER; i++) is_func[i] = 1;
   int nb_func_left = FUNCTION_NUMBER;

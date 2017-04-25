@@ -16,6 +16,8 @@
 # define T_CALC 0
 # define T_FUNCTION 1
 
+static char *funcs[] = {"sqrt", "exp", "ln", "cos", "sin", "tan"};
+
 struct tree *parse(char *s);
 
 #endif

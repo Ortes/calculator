@@ -22,6 +22,8 @@ double calculation(double a, double b, char operation)
     case '^' : return pow(a, b);
       break;
 
+    case 'e' : return exp(a);
+
 	default : errx(1, "internal error unknown operator");
       break;
   }
