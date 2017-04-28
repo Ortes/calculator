@@ -53,7 +53,7 @@ struct tree* __build_exp(char **s)
     else 
     {
       op_node = create_node(atof(*s));
-      while (IS_NUMBER(**s) || **s == '.' || **s  == 'e' || **s == 'E' || **s == '-') (*s)++;
+      while (IS_NUMBER(**s) || **s == '.' || **s  == 'e' || **s == 'E') (*s)++;
     }
   }
   int is_rot_possible = 0;
@@ -74,7 +74,7 @@ struct tree* __build_exp(char **s)
         (*s)++;
       } else {
         op_node->right = create_node(atof(*s));
-        while (IS_NUMBER(**s) || **s == '.' || **s  == 'e' || **s == 'E' || **s == '-') (*s)++;
+        while (IS_NUMBER(**s) || **s == '.' || **s  == 'e' || **s == 'E') (*s)++;
       }
     }
     if (is_rot_possible) {
