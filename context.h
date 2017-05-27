@@ -1,3 +1,8 @@
+struct tree {
+	int index[36];
+	struct tree *sons[36];
+};
+
 struct context {
 	char **func_name;
 	int nbFunc;
