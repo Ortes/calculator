@@ -22,6 +22,21 @@ double calculation(double a, double b, char operation)
     case '^' : return pow(a, b);
       break;
 
+    case 's' : return sqrt(a);
+      break;
+
+    case 'l' : return log(a);
+      break;
+
+    case '@' : return cos(a);
+      break;
+
+    case '#' : return sin(a);
+      break;
+
+    case 'j' : return tan(a);
+      break;
+
     case 'e' : return exp(a);
 
 	default : errx(1, "internal error unknown operator");
