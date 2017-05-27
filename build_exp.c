@@ -21,6 +21,21 @@ struct tree* __build_exp(char **s)
           if (boolArray[i]) {
             if (funcs[i][seek] != **s) {
               if (funcs[i][seek] == '\0') {
+                char ch;
+                switch (i) {
+                  case 0: ch = 's';
+                          break;
+                  case 1: ch = 'e';
+                          break;
+                  case 2: ch = 'l';
+                          break;
+                  case 3: ch = '@';
+                          break;
+                  case 4: ch = '#';
+                          break;
+                  case 5: ch = 'j';
+                          break;
+                }
                 (*s)++;
                 op_node = __build_exp(s);
                 struct tree *node = malloc(sizeof(struct tree));
@@ -28,7 +43,7 @@ struct tree* __build_exp(char **s)
                 op_node = node;
                 node = create_node(0);
                 op_node->right = node;
-                store_char(op_node, 'e');
+                store_char(op_node, ch);
                 (*s)--;
                 boolArray[0] == 1337;
                 nb = 0;
@@ -58,6 +73,10 @@ struct tree* __build_exp(char **s)
   }
   int is_rot_possible = 0;
 
+  if (**s == ')') {
+    (*s)++;
+    return op_node;
+  }
   while (**s) {
     struct tree *node = malloc(sizeof (struct tree));
     node->left = op_node;
