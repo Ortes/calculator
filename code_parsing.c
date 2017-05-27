@@ -1,40 +1,34 @@
 # include <stdlib.h>
 # include <string.h>
-
-struct context {
-	char **func_name;
-	int nbFunc;
-	int *func_addr;
-};
-
-char *key_words[] =
-	{ "tanke",
-		"if",
-		"else"
-		"var" };
-
-char *build_in_functions_names[] =
-	{ "print",
-		"input" };
-
-int build_in_functions_addr[] =
-	{ 0,
-		1 };
+# include "char_macros.h"
+# include "code_paring.h"
 
 static inline void rmSpaces(char **s) {
 	while (**s == ' ') (*s)++;
 }
 
-
-
-int tanke(char **s, struct context * context) {
+int cond(char **s; struct context *context) {
 	rmSpaces(s);
+	if (**s == '(') {
+		*s++;
+		cond(s, context);
+	}
+	if (IS_LETTER(**s)) {
+		
+	}
+	return 0;
+}
+
+int tanke(char **s, struct context *context) {
+	rmSpaces(s);
+	cond(s, context);
 	
 	return 0;
 }
 
-int (*keyWFuncs[3])(char ** s, struct context *context) =
-{ &tanke
+int (*keyWFuncs[3])(char **s, struct context *context) =
+{
+	&tanke
 };
 
 void check_instruction(char **s, struct context *context) {
