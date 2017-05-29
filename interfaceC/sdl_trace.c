@@ -65,15 +65,30 @@ void trace(char* str)
 
   draw_axis(ecran);
   int y;
-  int lastY = 1000 - (solveX(parse(str), (-1 - 500) / (1000. / 2 / 10)) * (1000 / 2 / 10) + 500);
-  for(int i = 0; i < 1001; i++) {
-    y = 1000 - (solveX(parse(str), (i - 500) / (1000. / 2 / 10)) * (1000 / 2 / 10) + 500);
-    if(y < 1000 && y >= 0) {
-      //putpixel(ecran, i, y, 0);
-      drawLine(ecran, i - 1, lastY, i, y, 0);
-    }
-    lastY = y;
-  }
+
+	char *s2 = str;
+	while (*s2 && *s2 == 'n') s2++;
+	if (!*s2) {
+		int lastY = 1000 - (solveX(parse(str), (-1 - 500) / (1000. / 2 / 10)) * (1000 / 2 / 10) + 500);
+		for(int i = 0; i < 1001; i++) {
+			y = 1000 - (solveX(parse(str), (i - 500) / (1000. / 2 / 10)) * (1000 / 2 / 10) + 500);
+			if(y < 1000 && y >= 0) {
+				drawLine(ecran, i - 1, lastY, i, y, 0);
+			}
+			lastY = y;
+		}
+	} else {
+		for (size_t n = 0; n < 20; n++) {
+			int lastY = 1000 - (solveXN(parse(str), (-1 - 500) / (1000. / 2 / 10), n) * (1000 / 2 / 10) + 500);
+			for(int i = 0; i < 1001; i++) {
+				y = 1000 - (solveXN(parse(str), (i - 500) / (1000. / 2 / 10), n) * (1000 / 2 / 10) + 500);
+				if(y < 1000 && y >= 0) {
+					drawLine(ecran, i - 1, lastY, i, y, 0);
+				}
+				lastY = y;
+			}
+		}
+	}
 
   SDL_Flip(ecran);
      

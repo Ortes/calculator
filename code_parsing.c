@@ -10,11 +10,11 @@ static inline void rmSpaces(char **s) {
 int cond(char **s; struct context *context) {
 	rmSpaces(s);
 	if (**s == '(') {
-		*s++;
+		(*s)++;
 		cond(s, context);
 	}
 	if (IS_LETTER(**s)) {
-		
+		if ((int index = search_var) != -1)
 	}
 	return 0;
 }
